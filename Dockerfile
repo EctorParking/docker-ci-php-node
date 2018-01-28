@@ -73,7 +73,7 @@ RUN command -v phpunit
 # Node.js
 RUN curl -sL https://deb.nodesource.com/setup_9.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
-RUN apt-get install nodejs -y
+RUN apt-get install nodejs ocaml libelf-dev -y
 RUN npm install -g yarn
 RUN command -v node
 RUN command -v npm
