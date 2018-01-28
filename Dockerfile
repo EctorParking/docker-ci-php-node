@@ -22,13 +22,14 @@ RUN apt-get install -y \
     python-software-properties \
     nasm \
     libjpeg-dev \
-    libpng-dev
+    libpng-dev \
+    mysql-client
 
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo    
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 RUN wget -q -O /tmp/libpng12.deb http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1_amd64.deb \
   && dpkg -i /tmp/libpng12.deb \
-  && rm /tmp/libpng12.deb    
+  && rm /tmp/libpng12.deb
 
 # PHP
 RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.1
@@ -45,10 +46,16 @@ RUN apt-get install -y \
     php7.1-soap \
     php7.1-json \
     php7.1-intl \
-    php7.1-imap \    
+    php7.1-imap \
     php-xdebug \
     php-memcached
 RUN command -v php
+
+# AWS
+RUN apt-get install -y \
+    python-pip \
+    python-dev
+RUN pip install setuptools awsebcli
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php
@@ -73,7 +80,8 @@ RUN command -v npm
 # Other
 RUN mkdir ~/.ssh
 RUN touch ~/.ssh_config
-
+RUN mkdir ~/phpunit
+RUN npm install newman --global
 # Display versions installed
 RUN php -v
 RUN composer --version
