@@ -56,6 +56,7 @@ RUN apt-get install -y \
     python-pip \
     python-dev
 RUN pip install setuptools awsebcli
+RUN pip install awscli --upgrade --user
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php
