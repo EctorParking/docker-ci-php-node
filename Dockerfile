@@ -49,6 +49,16 @@ RUN apt-get install -y \
     php7.1-imap \
     php-xdebug \
     php-memcached
+    vim \
+    git \
+    curl \
+    libgcc libstdc++ libx11 glib libxrender libxext libintl \
+    libcrypto1.0 libssl1.0 \
+    ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family
+
+COPY wkhtmltopdf /bin
+RUN chmod +x /bin/wkhtmltopdf
+
 RUN command -v php
 
 # AWS
