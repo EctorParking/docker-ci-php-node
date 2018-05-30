@@ -31,6 +31,12 @@ RUN wget -q -O /tmp/libpng12.deb http://mirrors.kernel.org/ubuntu/pool/main/libp
   && dpkg -i /tmp/libpng12.deb \
   && rm /tmp/libpng12.deb
 
+# Dockerize
+ENV DOCKERIZE_VERSION v0.6.1
+RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+  && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+  && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
 # PHP
 RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.1
 RUN apt-get install -y \
@@ -93,6 +99,7 @@ RUN mkdir ~/.ssh
 RUN touch ~/.ssh_config
 RUN mkdir ~/phpunit
 RUN npm install newman --global
+
 # Display versions installed
 RUN php -v
 RUN composer --version
