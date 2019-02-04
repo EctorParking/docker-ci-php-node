@@ -120,12 +120,6 @@ RUN mv composer.phar /usr/local/bin/composer && \
     composer self-update --preview
 RUN command -v composer
 
-# PHPUnit
-RUN wget https://phar.phpunit.de/phpunit.phar
-RUN chmod +x phpunit.phar
-RUN mv phpunit.phar /usr/local/bin/phpunit
-RUN command -v phpunit
-
 # Node.js
 RUN curl -sL https://deb.nodesource.com/setup_9.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
@@ -144,6 +138,5 @@ RUN npm install newman-reporter-html --global
 # Display versions installed
 RUN php -v
 RUN composer --version
-RUN phpunit --version
 RUN node -v
 RUN npm -v
