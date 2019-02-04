@@ -139,6 +139,7 @@ RUN mkdir ~/.ssh
 RUN touch ~/.ssh_config
 RUN mkdir ~/phpunit
 RUN npm install newman --global
+RUN npm install newman-reporter-html --global
 
 # Display versions installed
 RUN php -v
