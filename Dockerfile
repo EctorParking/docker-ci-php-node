@@ -76,22 +76,22 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
   && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 # PHP
-RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.1
+RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.2.5
 RUN apt-get update
 RUN apt-get install -y \
-    php7.1-curl \
-    php7.1-gd \
-    php7.1-dev \
-    php7.1-xml \
-    php7.1-bcmath \
-    php7.1-mysql \
-    php7.1-mbstring \
-    php7.1-zip \
-    php7.1-sqlite \
-    php7.1-soap \
-    php7.1-json \
-    php7.1-intl \
-    php7.1-imap \
+    php7.2.5-curl \
+    php7.2.5-gd \
+    php7.2.5-dev \
+    php7.2.5-xml \
+    php7.2.5-bcmath \
+    php7.2.5-mysql \
+    php7.2.5-mbstring \
+    php7.2.5-zip \
+    php7.2.5-sqlite \
+    php7.2.5-soap \
+    php7.2.5-json \
+    php7.2.5-intl \
+    php7.2.5-imap \
     php-xdebug \
     php-memcached \
     vim \
