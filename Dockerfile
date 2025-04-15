@@ -63,7 +63,7 @@ RUN command -v composer
 RUN apt-get install -y \
     python3-pip \
     python3-dev
-RUN ln -s /usr/bin/pip3 /usr/bin/pip
+RUN [ -e /usr/bin/pip ] || ln -s /usr/bin/pip3 /usr/bin/pip
 RUN pip install setuptools awsebcli awscli
 
 # Node.js
