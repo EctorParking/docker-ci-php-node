@@ -25,7 +25,7 @@ jobs:
           name: "Build"
           command: |
             docker build -t ectorparking/ectorparking/docker-test .
-            docker login -u $DOCKERHUB_USERNAME --password-stdin
+            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ectorparking/docker-test:0.0.1
       # - run:
       #     name: Push application Docker image
