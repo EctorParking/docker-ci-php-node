@@ -40,8 +40,12 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
   && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 # PHP
-RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php8.1
-RUN apt-get update
+RUN apt-get install -y software-properties-common gnupg ca-certificates
+RUN mkdir -p /etc/apt/keyrings \
+&& curl -fsSL https://packages.sury.org/php/apt.gpg | gpg --dearmor -o /etc/apt/keyrings/sury.gpg \
+&& echo "deb [signed-by=/etc/apt/keyrings/sury.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+
+RUN apt-get update && apt-get install -y php8.1RUN apt-get update
 RUN apt-get install -y \
     php8.1-curl \
     php8.1-gd \
