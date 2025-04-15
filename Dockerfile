@@ -61,16 +61,12 @@ RUN command -v composer
 
 # AWS
 RUN apt-get install -y \
-    python-pip \
-    python-dev
-RUN pip install setuptools awsebcli
-RUN sudo pip install awscli
-
-# Node.js
-RUN apt-get install -y \
     python3-pip \
     python3-dev
+RUN ln -s /usr/bin/pip3 /usr/bin/pip
+RUN pip install setuptools awsebcli awscli
 
+# Node.js
 RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
 RUN apt-get install nodejs -y
