@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 RUN export LC_ALL=C.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive
@@ -29,9 +29,9 @@ RUN apt-get install -y \
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
-RUN wget -q -O /tmp/libpng12.deb http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_amd64.deb \
-  && dpkg -i /tmp/libpng12.deb \
-  && rm /tmp/libpng12.deb
+# RUN wget -q -O /tmp/libpng12.deb http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.54-1ubuntu1.1_amd64.deb \
+#   && dpkg -i /tmp/libpng12.deb \
+#   && rm /tmp/libpng12.deb
 
 # Dockerize
 ENV DOCKERIZE_VERSION v0.6.1
@@ -40,25 +40,34 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
   && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 # PHP
-RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.4
+RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php8.1
+RUN apt-get update
 RUN apt-get install -y \
-    php7.4-curl \
-    php7.4-gd \
-    php7.4-dev \
-    php7.4-xml \
-    php7.4-bcmath \
-    php7.4-mysql \
-    php7.4-pgsql \
-    php7.4-mbstring \
-    php7.4-zip \
-    php7.4-bz2 \
-    php7.4-sqlite \
-    php7.4-soap \
-    php7.4-json \
-    php7.4-intl \
-    php7.4-imap \
-    php7.4-imagick \
-    php-memcached
+    php8.1-curl \
+    php8.1-gd \
+    php8.1-dev \
+    php8.1-xml \
+    php8.1-bcmath \
+    php8.1-mysql \
+    php8.1-mbstring \
+    php8.1-zip \
+    php8.1-sqlite \
+    php8.1-soap \
+    php8.1-json \
+    php8.1-intl \
+    php8.1-imap \
+    php-xdebug \
+    php-memcached \
+    vim \
+    git \
+    curl \
+    xvfb \
+    libfontconfig \
+    wkhtmltopdf
+
+COPY wkhtmltopdf /bin
+RUN chmod +x /bin/wkhtmltopdf
+
 RUN command -v php
 
 # AWS
