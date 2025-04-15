@@ -23,12 +23,15 @@ jobs:
           docker_layer_caching: true
       - run:
           name: "Build"
-          command: "docker build -t ectorparking/ectorparking/docker-test ."
-      - run:
-          name: Push application Docker image
           command: |
-            echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+            docker build -t ectorparking/ectorparking/docker-test .
+            docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push ectorparking/docker-test:0.0.1
+      # - run:
+      #     name: Push application Docker image
+      #     command: |
+      #       echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+      #       docker push ectorparking/docker-test:0.0.1
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
