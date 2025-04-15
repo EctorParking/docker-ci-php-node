@@ -39,12 +39,15 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
   && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
   && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-# PHP
-RUN apt-get install -y software-properties-common gnupg ca-certificates
+# Installer lsb-release AVANT de l'utiliser
+RUN apt-get install -y lsb-release curl gnupg2 ca-certificates
+
+# Ajouter la clé GPG et le dépôt SURY pour PHP 8.1
 RUN mkdir -p /etc/apt/keyrings \
 && curl -fsSL https://packages.sury.org/php/apt.gpg | gpg --dearmor -o /etc/apt/keyrings/sury.gpg \
-&& echo "deb [signed-by=/etc/apt/keyrings/sury.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list
+&& echo "deb [signed-by=/etc/apt/keyrings/sury.gpg] https://packages.sury.org/php/ focal main" > /etc/apt/sources.list.d/php.list
 
+# Mettre à jour les sources et installer PHP 8.1
 RUN apt-get update && apt-get install -y php8.1
 RUN apt-get install -y \
     php8.1-curl \
