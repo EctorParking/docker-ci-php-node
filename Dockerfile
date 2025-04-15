@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
 RUN export LC_ALL=C.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive
@@ -76,22 +76,22 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
   && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
 # PHP
-RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.1
+RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php8.1
 RUN apt-get update
 RUN apt-get install -y \
-    php7.1-curl \
-    php7.1-gd \
-    php7.1-dev \
-    php7.1-xml \
-    php7.1-bcmath \
-    php7.1-mysql \
-    php7.1-mbstring \
-    php7.1-zip \
-    php7.1-sqlite \
-    php7.1-soap \
-    php7.1-json \
-    php7.1-intl \
-    php7.1-imap \
+    php8.1-curl \
+    php8.1-gd \
+    php8.1-dev \
+    php8.1-xml \
+    php8.1-bcmath \
+    php8.1-mysql \
+    php8.1-mbstring \
+    php8.1-zip \
+    php8.1-sqlite \
+    php8.1-soap \
+    php8.1-json \
+    php8.1-intl \
+    php8.1-imap \
     php-xdebug \
     php-memcached \
     vim \
