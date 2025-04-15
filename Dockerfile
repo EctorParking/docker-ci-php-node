@@ -3,6 +3,7 @@ FROM ubuntu:20.04
 RUN export LC_ALL=C.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update
 RUN apt-get install -y \
@@ -11,6 +12,8 @@ RUN apt-get install -y \
     autogen \
     language-pack-en-base \
     wget \
+    zip \
+    unzip \
     curl \
     rsync \
     ssh \
@@ -19,49 +22,10 @@ RUN apt-get install -y \
     build-essential \
     apt-utils \
     software-properties-common \
-    python-software-properties \
     nasm \
     libjpeg-dev \
     libpng-dev \
-    mysql-client \
-    gconf-service \
-    libasound2 \
-    libatk1.0-0 \
-    libc6 \
-    libcairo2 \
-    libcups2 \
-    libdbus-1-3 \
-    libexpat1 \
-    libfontconfig1 \
-    libgcc1 \
-    libgconf-2-4 \
-    libgdk-pixbuf2.0-0 \
-    libglib2.0-0 \
-    libgtk-3-0 \
-    libnspr4 \
-    libpango-1.0-0 \
-    libpangocairo-1.0-0 \
-    libstdc++6 \
-    libx11-6 \
-    libx11-xcb1 \
-    libxcb1 \
-    libxcomposite1 \
-    libxcursor1 \
-    libxdamage1 \
-    libxext6 \
-    libxfixes3 \
-    libxi6 \
-    libxrandr2 \
-    libxrender1 \
-    libxss1 \
-    libxtst6 \
-    ca-certificates \
-    fonts-liberation \
-    libappindicator1 \
-    libnss3 \
-    lsb-release \
-    xdg-utils \
-    wget
+    libpng16-16
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
