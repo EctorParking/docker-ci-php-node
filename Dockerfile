@@ -1,4 +1,4 @@
-FROM ubuntu:24.10
+FROM ubuntu:22.04
 
 RUN export LC_ALL=C.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive
