@@ -53,7 +53,6 @@ RUN apt-get install -y \
     php8.1-zip \
     php8.1-sqlite \
     php8.1-soap \
-    php8.1-json \
     php8.1-intl \
     php8.1-imap \
     php-xdebug \
