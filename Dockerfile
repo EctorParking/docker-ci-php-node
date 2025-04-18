@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 ENV TZ=UTC
 
@@ -46,6 +46,7 @@ RUN apt-get install -y \
     php7.4-bz2 \
     php7.4-sqlite \
     php7.4-soap \
+    php7.4-json \
     php7.4-intl \
     php7.4-imap \
     php7.4-imagick \
@@ -59,13 +60,6 @@ RUN mv composer.phar /usr/local/bin/composer && \
     composer self-update
 RUN command -v composer
 
-# AWS
-RUN apt-get install -y \
-    python3-pip \
-    python3-dev
-RUN [ -e /usr/bin/pip ] || ln -s /usr/bin/pip3 /usr/bin/pip
-RUN pip install setuptools awsebcli awscli
-
 # Node.js
 RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
@@ -73,6 +67,13 @@ RUN apt-get install nodejs -y
 RUN npm install npm@6 -g
 RUN command -v node
 RUN command -v npm
+
+# AWS
+RUN apt-get install -y \
+    python3-pip \
+    python3-dev
+RUN [ -e /usr/bin/pip ] || ln -s /usr/bin/pip3 /usr/bin/pip
+RUN pip install setuptools awsebcli awscli
 
 # Other
 RUN mkdir ~/.ssh
