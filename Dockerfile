@@ -51,6 +51,9 @@ RUN apt-get install -y \
     php7.4-intl \
     php7.4-imap \
     php7.4-imagick \
+    php7.4-ext-curl \
+    php7.4-ext-zip \
+    php7.4-ext-simplexml \
     php-memcached
 RUN command -v php
 
