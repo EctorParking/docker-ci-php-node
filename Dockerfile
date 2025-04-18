@@ -32,23 +32,23 @@ RUN apt-get install -y \
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 # PHP
-RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php8.1
+RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.4
 RUN apt-get install -y \
-    php8.1-curl \
-    php8.1-gd \
-    php8.1-dev \
-    php8.1-xml \
-    php8.1-bcmath \
-    php8.1-mysql \
-    php8.1-pgsql \
-    php8.1-mbstring \
-    php8.1-zip \
-    php8.1-bz2 \
-    php8.1-sqlite \
-    php8.1-soap \
-    php8.1-intl \
-    php8.1-imap \
-    php8.1-imagick \
+    php7.4-curl \
+    php7.4-gd \
+    php7.4-dev \
+    php7.4-xml \
+    php7.4-bcmath \
+    php7.4-mysql \
+    php7.4-pgsql \
+    php7.4-mbstring \
+    php7.4-zip \
+    php7.4-bz2 \
+    php7.4-sqlite \
+    php7.4-soap \
+    php7.4-intl \
+    php7.4-imap \
+    php7.4-imagick \
     php-memcached
 RUN command -v php
 
