@@ -33,12 +33,7 @@ RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
 # PHP
 RUN apt-get purge -y 'php*' && apt-get autoremove -y
-RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.4 php7.4-cli php7.4-common php7.4-fpm
-RUN sudo apt-get install -y \
-    php7.4-curl \
-    php7.4-mbstring \
-    php7.4-zip \
-    php7.4-simplexml \
+RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.4 php7.4-cli php7.4-common php7.4-fpm php7.4-curl php7.4-mbstring php7.4-zip php7.4-simplexml
 RUN command -v php
 
 # Composer
