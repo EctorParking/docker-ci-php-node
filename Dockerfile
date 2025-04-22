@@ -42,7 +42,7 @@ RUN sudo apt-get install -y \
 RUN command -v php
 
 # Composer
-RUN curl -sS https://getcomposer.org/installer | php
+RUN curl -sS https://getcomposer.org/installer | php -- --1
 RUN mv composer.phar /usr/local/bin/composer && \
     chmod +x /usr/local/bin/composer && \
     composer self-update
