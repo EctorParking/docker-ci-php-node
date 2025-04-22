@@ -32,6 +32,7 @@ jobs:
       - run:
           name: Print php version
           command: |
+            docker ps
             docker exec ectorparking/docker-test php -v
          
 
