@@ -54,7 +54,6 @@ RUN apt-get install -y \
     php7.4-ext-curl \
     php7.4-ext-zip \
     php7.4-ext-simplexml \
-    php-memcached
 RUN command -v php
 
 # Composer
