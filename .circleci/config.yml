@@ -32,7 +32,7 @@ jobs:
       - run:
           name: Print php version
           command: |
-            docker-compose exec ectorparking/docker-test php -v
+            docker exec ectorparking/docker-test php -v
          
 
 # Orchestrate jobs using workflows
