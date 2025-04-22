@@ -37,9 +37,8 @@ RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && ap
 RUN sudo apt-get install -y \
     php7.4-curl \
     php7.4-mbstring \
-    php7.4-ext-curl \
-    php7.4-ext-zip \
-    php7.4-ext-simplexml \
+    php7.4-zip \
+    php7.4-simplexml \
 RUN command -v php
 
 # Composer
