@@ -29,10 +29,10 @@ jobs:
             docker build -t $IMAGE_NAME:$TAG .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $IMAGE_NAME:$TAG
-      # - run:
-      #     name: Print php version
-      #     command: |
-      #       docker run -it 
+      - run:
+          name: Print php version
+          command: |
+            docker-compose exec ectorparking/docker-test php -v
          
 
 # Orchestrate jobs using workflows
