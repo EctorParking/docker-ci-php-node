@@ -27,6 +27,7 @@ RUN apt-get install -y \
     nasm \
     libjpeg-dev \
     libpng-dev \
+    mysql-client \
     libpng16-16
 
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
