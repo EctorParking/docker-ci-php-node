@@ -42,10 +42,13 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 RUN apt-get purge -y 'php*' && apt-get autoremove -y
 RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update
 RUN apt-get install -y php7.4 php7.4-cli php7.4-common php7.4-fpm php7.4-curl php7.4-mbstring php7.4-zip php7.4-simplexml php7.4-soap php7.4-mysql
-RUN sudo apt-get install -y wkhtmltopdf
 
-COPY wkhtmltopdf /bin
-RUN chmod +x /bin/wkhtmltopdf
+# Install wkhtmltopdf
+RUN apt-get install -y xfonts-75dpi xfonts-base
+RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.focal_amd64.deb
+RUN dpkg -i wkhtmltox_0.12.6.1-2.focal_amd64.deb || true
+RUN apt-get install -f -y
+RUN rm wkhtmltox_0.12.6.1-2.focal_amd64.deb
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php
