@@ -45,10 +45,10 @@ RUN apt-get install -y php7.4 php7.4-cli php7.4-common php7.4-fpm php7.4-curl ph
 
 # Install wkhtmltopdf
 RUN apt-get install -y xfonts-75dpi xfonts-base
-RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.focal_amd64.deb
-RUN dpkg -i wkhtmltox_0.12.6.1-2.focal_amd64.deb || true
+RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
+RUN dpkg -i wkhtmltox_0.12.5-1.bionic_amd64.deb || true
 RUN apt-get install -f -y
-RUN rm wkhtmltox_0.12.6.1-2.focal_amd64.deb
+RUN rm wkhtmltox_0.12.5-1.bionic_amd64.deb
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php
