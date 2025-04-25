@@ -40,7 +40,9 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 
 # PHP
 RUN apt-get purge -y 'php*' && apt-get autoremove -y
-RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.4 php7.4-cli php7.4-common php7.4-fpm php7.4-curl php7.4-mbstring php7.4-zip php7.4-simplexml php7.4-soap php7.4-mysql
+RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update && apt-get install -y php7.4 php7.4-cli php7.4-common php7.4-fpm php7.4-curl php7.4-mbstring php7.4-zip php7.4-simplexml php7.4-soap php7.4-mysql wkhtmltopdf
+COPY wkhtmltopdf /bin
+RUN chmod +x /bin/wkhtmltopdf
 RUN command -v php
 
 # Composer
