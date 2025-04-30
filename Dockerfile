@@ -60,7 +60,8 @@ RUN mv composer.phar /usr/local/bin/composer && \
 RUN curl -sL https://deb.nodesource.com/setup_12.x -o nodesource_setup.sh
 RUN bash nodesource_setup.sh
 RUN apt-get install nodejs -y
-RUN npm install npm@6 -g
+RUN npm install -g npm@6
+RUN npm install -g yarn
 
 # AWS
 RUN apt-get install -y \
