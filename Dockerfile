@@ -41,7 +41,7 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 # PHP
 RUN apt-get purge -y 'php*' && apt-get autoremove -y
 RUN LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php && apt-get update
-RUN apt-get install -y php8.1 php8.1-cli php8.1-common php8.1-fpm php8.1-curl php8.1-mbstring php8.1-zip php8.1-simplexml php8.1-soap php8.1-mysql php8.1-intl
+RUN apt-get install -y php7.1 php7.1-cli php7.1-common php7.1-fpm php7.1-curl php7.1-mbstring php7.1-zip php7.1-simplexml php7.1-soap php7.1-mysql php7.1-intl
 
 # Install wkhtmltopdf
 RUN apt-get install -y xfonts-75dpi xfonts-base
