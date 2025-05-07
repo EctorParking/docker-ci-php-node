@@ -1,5 +1,22 @@
 # Docker image for Continuous Integration
 
+## Release docker image
+
+Images are hosted in company dockerhub https://hub.docker.com/orgs/ectorparking/repositories
+
+Build and releases are managed by circleci
+
+To trigger a new build and publish in dockerhub you have to create a git tag
+
+create tag, for example version 0.1.0 here
+`git tag 0.1.0`
+
+push the tag to origin
+`git push origin <TAG_NAME>`
+
+for staging / dev process you can create suffixed tags like `0.1.1-1-staging`
+
+
 ## System information
   * Ubuntu 20.04
 
