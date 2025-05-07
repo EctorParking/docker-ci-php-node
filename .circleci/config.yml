@@ -29,7 +29,6 @@ jobs:
             docker build -t $IMAGE_NAME:$TAG .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $IMAGE_NAME:$TAG
-            echo $CIRCLE_BRANCH
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
