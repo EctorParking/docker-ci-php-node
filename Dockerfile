@@ -77,6 +77,5 @@ RUN touch ~/.ssh_config
 # Display versions installed
 RUN php -v
 RUN composer --version
-RUN phpunit --version
 RUN node -v
 RUN npm -v
