@@ -24,11 +24,12 @@ jobs:
       - run:
           name: "Build and push Docker image"
           command: |
-            TAG=0.0.1-composer-2
-            IMAGE_NAME=ectorparking/docker-test
+            TAG=$CIRCLE_TAG
+            IMAGE_NAME=ectorparking/docker-ci-php-node
             docker build -t $IMAGE_NAME:$TAG .
             echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
             docker push $IMAGE_NAME:$TAG
+            echo $CIRCLE_BRANCH
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
@@ -41,4 +42,4 @@ workflows:
             tags:
               only: /.*/  # Run for all tags
             branches:
-              ignore: /.*/ # Skip branch push
+              ignore: /.*/ # Ignore branch push
