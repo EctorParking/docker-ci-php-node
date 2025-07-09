@@ -42,7 +42,7 @@ for staging / dev process you can create suffixed tags like `0.1.1-1-staging`
   * mySQL Client
   * libpng16-16
   * Dockerize v0.6.1
-  * PHP 7.1
+  * PHP 8.1
     * cli
     * common
     * fpm
@@ -55,7 +55,7 @@ for staging / dev process you can create suffixed tags like `0.1.1-1-staging`
     * intl
   * Wkhtmltopdf 0.12.5
   * Composer
-  * Node.js 12.x
+  * Node.js 18.x
     * npm 6
     * yarn
   * Python3
