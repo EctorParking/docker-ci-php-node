@@ -6,40 +6,43 @@ RUN DEBIAN_FRONTEND=noninteractive
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y \
-    sudo \
-    autoconf \
-    autogen \
-    language-pack-en-base \
-    wget \
-    zip \
-    unzip \
-    curl \
-    rsync \
-    ssh \
-    openssh-client \
-    git \
-    build-essential \
-    apt-utils \
-    software-properties-common \
-    nasm \
-    libjpeg-dev \
-    libpng-dev \
-    mysql-client \
-    libpng16-16 \
-    libxml2-dev \
-    vim \
-    nano \
-    zlib1g-dev \
-    xorg \
-    libssl-dev \
-    libxrender-dev \
-    gdebi \
-    libzip-dev \
-    libicu-dev \
-    libonig-dev \
-    libfreetype6-dev
+RUN apt-get update && apt-get upgrade -y
+
+RUN apt-get install -y sudo
+RUN apt-get install -y autoconf
+RUN apt-get install -y autogen
+RUN apt-get install -y language-pack-en-base
+RUN apt-get install -y wget
+RUN apt-get install -y zip
+RUN apt-get install -y unzip
+RUN apt-get install -y curl
+RUN apt-get install -y rsync
+RUN apt-get install -y ssh
+RUN apt-get install -y openssh-client
+RUN apt-get install -y git
+RUN apt-get install -y build-essential
+RUN apt-get install -y apt-utils
+RUN apt-get install -y software-properties-common
+
+RUN apt-get install -y nasm
+RUN apt-get install -y libjpeg-dev
+RUN apt-get install -y libpng-dev
+RUN apt-get install -y libpng16-16
+RUN apt-get install -y libfreetype6-dev
+RUN apt-get install -y libxrender-dev
+RUN apt-get install -y libssl-dev
+RUN apt-get install -y zlib1g-dev
+RUN apt-get install -y libzip-dev
+
+RUN apt-get install -y libxml2-dev
+RUN apt-get install -y libicu-dev
+RUN apt-get install -y libonig-dev
+
+RUN apt-get install -y mysql-client
+RUN apt-get install -y vim
+RUN apt-get install -y nano
+RUN apt-get install -y xorg
+RUN apt-get install -y gdebi
 
 # Add user
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
