@@ -1,8 +1,10 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 ENV TZ=UTC
 RUN export LC_ALL=C.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
@@ -56,11 +58,13 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 # PHP
 RUN apt-get purge -y 'php*' && apt-get autoremove -y
 
-
-RUN apt-get install -y lsb-release gnupg2 ca-certificates apt-transport-https software-properties-common
-RUN add-apt-repository ppa:ondrej/php -y && \
-    apt-get update
-
+RUN apt-get update && apt-get install -y \
+    lsb-release \
+    apt-transport-https \
+    ca-certificates \
+    software-properties-common \
+    wget \
+    gnupg2
 
 RUN apt-cache policy php8.1
 RUN apt-get install -y php8.1
@@ -92,9 +96,8 @@ RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
     npm install -g yarn
 
 # AWS CLI
-RUN apt-get install -y python3-pip python3-dev && \
-    ln -s /usr/bin/pip3 /usr/bin/pip && \
-    pip install setuptools awsebcli awscli
+RUN apt-get install -y python3-pip python3-dev \
+ && pip3 install setuptools awsebcli awscli
 
 # Final setup
 RUN mkdir ~/.ssh && touch ~/.ssh_config
