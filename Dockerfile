@@ -55,8 +55,14 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 
 # PHP
 RUN apt-get purge -y 'php*' && apt-get autoremove -y
-RUN add-apt-repository ppa:ondrej/php && apt-get update && \
-    apt-get install -y \
+
+
+RUN apt-get install -y lsb-release gnupg2 ca-certificates apt-transport-https software-properties-common
+RUN add-apt-repository ppa:ondrej/php -y && \
+    apt-get update
+
+
+RUN apt-get install -y \
     php8.1 \
     php8.1-cli \
     php8.1-common \
@@ -70,6 +76,7 @@ RUN add-apt-repository ppa:ondrej/php && apt-get update && \
     php8.1-intl \
     php8.1-gd \
     php8.1-bcmath
+
 # Install wkhtmltopdf
 RUN apt-get update && apt-get install -y wkhtmltopdf
 
