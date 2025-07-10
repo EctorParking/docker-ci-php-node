@@ -41,7 +41,7 @@ RUN apt-get install -y libonig-dev
 RUN apt-get install -y mysql-client
 RUN apt-get install -y vim
 RUN apt-get install -y nano
-RUN apt-get install -y xorg
+# RUN apt-get install -y xorg
 RUN apt-get install -y gdebi
 
 # Add user
