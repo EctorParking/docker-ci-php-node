@@ -18,7 +18,7 @@ for staging / dev process you can create suffixed tags like `0.1.1-1-staging`
 
 
 ## System information
-  * Ubuntu 20.04
+  * Ubuntu 22.04
 
 ## Installed packages
   * sudo
@@ -42,7 +42,7 @@ for staging / dev process you can create suffixed tags like `0.1.1-1-staging`
   * mySQL Client
   * libpng16-16
   * Dockerize v0.6.1
-  * PHP 8.1
+  * PHP 8.2
     * cli
     * common
     * fpm

@@ -66,20 +66,24 @@ RUN apt-get update && apt-get install -y \
     wget \
     gnupg2
 
-RUN apt-cache policy php8.1
-RUN apt-get install -y php8.1
-RUN apt-get install -y php8.1-cli
-RUN apt-get install -y php8.1-common
-RUN apt-get install -y php8.1-fpm
-RUN apt-get install -y php8.1-curl
-RUN apt-get install -y php8.1-mbstring
-RUN apt-get install -y php8.1-zip
-RUN apt-get install -y php8.1-xml
-RUN apt-get install -y php8.1-soap
-RUN apt-get install -y php8.1-mysql
-RUN apt-get install -y php8.1-intl
-RUN apt-get install -y php8.1-gd
-RUN apt-get install -y php8.1-bcmath
+# Ubuntu 22.04's default repos only ship PHP 8.1 - the ondrej/php PPA is the
+# standard, well-maintained source for newer PHP versions on Ubuntu/Debian.
+RUN add-apt-repository -y ppa:ondrej/php && apt-get update
+
+RUN apt-cache policy php8.2
+RUN apt-get install -y php8.2
+RUN apt-get install -y php8.2-cli
+RUN apt-get install -y php8.2-common
+RUN apt-get install -y php8.2-fpm
+RUN apt-get install -y php8.2-curl
+RUN apt-get install -y php8.2-mbstring
+RUN apt-get install -y php8.2-zip
+RUN apt-get install -y php8.2-xml
+RUN apt-get install -y php8.2-soap
+RUN apt-get install -y php8.2-mysql
+RUN apt-get install -y php8.2-intl
+RUN apt-get install -y php8.2-gd
+RUN apt-get install -y php8.2-bcmath
 
 # Install wkhtmltopdf
 RUN apt-get update && apt-get install -y wkhtmltopdf
